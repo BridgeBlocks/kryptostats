@@ -4,7 +4,6 @@
 
 function cryptoassets_scripts() {
 
-
     wp_enqueue_style( 'main', '/wp-content/plugins/cryptostats/assets/style.css', NULL, '1.0', 'all' );
   	wp_enqueue_script('vendor', '/wp-content/plugins/cryptostats/assets/vendor.js', NULL, '1.0', TRUE);
   	wp_enqueue_script('main', '/wp-content/plugins/cryptostats/assets/main.js', array('vendor'), '1.0', TRUE);

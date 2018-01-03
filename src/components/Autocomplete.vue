@@ -1,7 +1,7 @@
 <template>
     <div class="cryptostats__exhange-search-widget" style="position:relative" v-bind:class="{'open':openSuggestion}">
         <label for="coin-peiler velger">Coin-peiler(små bokstaver)
-          <input name="coin-peiler velger" placeolder="bitcoin" class="form-control" type="text" :value="value" @input="updateValue($event.target.value)"
+          <input name="coin-peiler velger" placeolder="bitcoin" class="form-control" type="text" :value="value" @input.prevent="updateValue($event.target.value)"
             @keydown.enter = 'enter'
             @keydown.down = 'down'
             @keydown.up = 'up'
@@ -10,9 +10,9 @@
         <ul class="cryptostats__coin-dropdown-menu" style="width:100%">
             <li v-for="(suggestion, index) in matches"
                 v-bind:class="{'active': isActive(index)}"
-                @click="suggestionClick(index)"
+                @click.prevent="suggestionClick(index)"
             >
-              <a href="#!">{{ suggestion.coinName }} <small>{{ suggestion.coinTicker }}</small>
+              <a href="#">{{ suggestion.coinName }} <small>{{ suggestion.coinTicker }}</small>
               </a>
             </li>
         </ul>
@@ -99,7 +99,6 @@ export default {
         body: this.matches[index].coinId
       })
       .then(response => {
-        console.log(response);
         this.coinExchanges = response.data;
 
       })
